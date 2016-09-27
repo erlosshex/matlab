@@ -1,0 +1,43 @@
+clear all;
+clc;
+Img=imread('4.tif');
+figure;
+subplot(121);
+imshow(Img);  %显示原图
+title('原始图像');
+[m,n]=size(Img);
+% Img=double(Img);
+Th=1;
+T0=0;
+T1=(min(Img(:))+max(Img(:)))/2;  %设定初始的阈值
+
+% while abs(T1-T0)>Th
+%     a=0;A=0;b=0;B=0;
+%     T0=T1;
+%     for i=1:m
+%         for j=1:n
+%             if Img(i,j)>T0;
+%                 a=a+1;
+%                 A=A+Img(i,j);
+%             else
+%                 b=b+1;
+%                 B=B+Img(i,j);
+%             end
+%         end
+%     end
+%     T1=0.5*(A/a+B/b);
+% end
+while abs(T1-T0)>1
+    
+end
+for i=1:m
+    for j=1:n
+        if Img(i,j)>T1
+            Img(i,j)=255;
+        else
+            Img(i,j)=1;
+        end
+    end
+end
+subplot(122);
+imshow(Img);title('分割后的图像');

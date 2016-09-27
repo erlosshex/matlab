@@ -1,0 +1,11 @@
+clear all;
+close all;
+clc;
+
+I = im2double(imread('4'));
+x=198; y=359;
+J = regiongrowing(I,x,y,0.2); 
+% figure, imshow(I+J);
+figure;
+subplot(121);    imshow(I);    title('处理前');
+subplot(122);    imshow(J);    title('处理后');
